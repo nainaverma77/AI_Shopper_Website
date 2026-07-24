@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Cart — AiShopper</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-left">
+    <a href="index.html" class="logo-wrap">
+      <img src="assets/images/logo1.png" alt="AiShopper Logo" class="logo" />
+    </a>
+    <a href="index.html" class="brand">AiShopper</a>
+  </div>
+  <div class="nav-center"></div>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle" type="button">
+      <span class="sun">☀️</span>
+      <span class="moon">🌙</span>
+    </button>
+    <a href="index.html" class="nav-icon" style="text-decoration:none">🏠</a>
+  </div>
+</nav>
+
+<!-- LAYOUT -->
+<div class="layout">
+  <main style="width:100%">
+
+    <section class="hero animate-in">
+      <div>
+        <h1>🛒 Your Cart</h1>
+        <p>Review your items before checkout.</p>
+      </div>
+    </section>
+
+    <!-- CART ITEMS -->
+    <section class="animate-in animate-in-delay-1">
+      <div class="grid" id="cartItems"></div>
+
+      <div id="cartFooter" style="margin-top:24px; display:none; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; padding:24px; background:var(--glass-bg); backdrop-filter:blur(12px); border:1px solid var(--glass-border); border-radius:var(--radius-lg);">
+        <div>
+          <div style="font-size:var(--text-xs);color:var(--text-muted);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:4px">Total Amount</div>
+          <h2 id="totalPrice" style="font-family:var(--font-display);font-size:var(--text-2xl);background:linear-gradient(135deg,var(--primary-light),var(--accent));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin:0"></h2>
+        </div>
+        <div style="display:flex;gap:12px;align-items:center">
+          <input type="text" class="input-field" id="couponInput" placeholder="Coupon code" style="width:160px" />
+          <button class="ghost" id="applyCouponBtn" type="button">Apply</button>
+          <button class="primary" id="checkoutBtn" type="button" style="padding:12px 32px">🛍 Checkout</button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="footer">
+  <div class="footer-bottom">© 2026 AiShopper. All rights reserved.</div>
+</footer>
+
+<script type="module" src="js/main.js"></script>
+<script type="module" src="js/cart.js"></script>
+
+</body>
+</html>

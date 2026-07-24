@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login — AiShopper</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+  <style>
+    .auth-page {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-6);
+    }
+
+    .auth-card {
+      width: 100%;
+      max-width: 440px;
+      background: var(--glass-bg);
+      backdrop-filter: blur(24px);
+      -webkit-backdrop-filter: blur(24px);
+      border: 1px solid var(--glass-border);
+      border-radius: var(--radius-2xl);
+      padding: var(--space-10);
+      box-shadow: var(--shadow-xl);
+      position: relative;
+      overflow: hidden;
+      animation: fadeSlideUp 0.5s var(--ease-out);
+    }
+
+    .auth-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary), var(--accent), var(--primary-light));
+    }
+
+    .auth-header {
+      text-align: center;
+      margin-bottom: var(--space-8);
+    }
+
+    .auth-header .auth-logo {
+      width: 56px;
+      height: 56px;
+      border-radius: var(--radius-lg);
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--space-4);
+      font-size: var(--text-2xl);
+    }
+
+    .auth-header h1 {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-weight: 700;
+      margin-bottom: var(--space-2);
+    }
+
+    .auth-header p {
+      color: var(--text-muted);
+      font-size: var(--text-sm);
+    }
+
+    .auth-form {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    .auth-form .input-field {
+      height: 48px;
+      padding: 0 var(--space-4);
+      border-radius: var(--radius-md);
+    }
+
+    .auth-form button[type="submit"] {
+      height: 48px;
+      font-size: var(--text-base);
+      font-weight: 600;
+      border-radius: var(--radius-md);
+      margin-top: var(--space-2);
+    }
+
+    .auth-tabs {
+      display: flex;
+      background: var(--surface-1);
+      border-radius: var(--radius-md);
+      padding: 4px;
+      margin-bottom: var(--space-6);
+    }
+
+    .auth-tab {
+      flex: 1;
+      padding: var(--space-3);
+      text-align: center;
+      border-radius: var(--radius-sm);
+      font-size: var(--text-sm);
+      font-weight: 500;
+      color: var(--text-muted);
+      cursor: pointer;
+      background: transparent;
+      transition: all var(--duration-normal) var(--ease-out);
+    }
+
+    .auth-tab.active {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 4px 12px var(--primary-glow);
+    }
+
+    .auth-footer {
+      text-align: center;
+      margin-top: var(--space-6);
+      font-size: var(--text-sm);
+      color: var(--text-muted);
+    }
+
+    .auth-footer a {
+      color: var(--primary-light);
+      font-weight: 500;
+    }
+
+    .remember-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: var(--text-sm);
+    }
+
+    .remember-row label {
+      display: flex;
+      align-items: center;
+      gap: var(--space-2);
+      color: var(--text-secondary);
+      cursor: pointer;
+    }
+
+    .remember-row a {
+      color: var(--primary-light);
+      font-size: var(--text-xs);
+    }
+
+    #signupFields {
+      display: none;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    #signupFields.active {
+      display: flex;
+    }
+
+    #loginFields {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+    }
+
+    #loginFields.hidden {
+      display: none;
+    }
+
+    .auth-error {
+      background: rgba(255, 107, 107, 0.1);
+      border: 1px solid rgba(255, 107, 107, 0.2);
+      border-radius: var(--radius-sm);
+      padding: var(--space-3) var(--space-4);
+      font-size: var(--text-sm);
+      color: var(--danger);
+      display: none;
+    }
+
+    .auth-error.show {
+      display: block;
+      animation: fadeSlideUp 0.3s var(--ease-out);
+    }
+  </style>
+</head>
+<body>
+
+<div class="auth-page">
+  <div class="auth-card">
+
+    <div class="auth-header">
+      <div class="auth-logo">🛍</div>
+      <h1>Welcome to AiShopper</h1>
+      <p>Sign in to unlock personalized AI shopping</p>
+    </div>
+
+    <!-- Tabs -->
+    <div class="auth-tabs">
+      <button class="auth-tab active" id="loginTab" type="button">Login</button>
+      <button class="auth-tab" id="signupTab" type="button">Sign Up</button>
+    </div>
+
+    <!-- Error -->
+    <div class="auth-error" id="authError"></div>
+
+    <form class="auth-form" id="authForm">
+
+      <!-- Signup fields (hidden by default) -->
+      <div id="signupFields">
+        <div class="input-group">
+          <label class="input-label">Full Name</label>
+          <input type="text" class="input-field" id="nameInput" placeholder="Your full name" />
+        </div>
+      </div>
+
+      <!-- Login fields -->
+      <div id="loginFields">
+        <div class="input-group">
+          <label class="input-label">Email</label>
+          <input type="email" class="input-field" id="emailInput" placeholder="name@example.com" required />
+        </div>
+
+        <div class="input-group">
+          <label class="input-label">Password</label>
+          <input type="password" class="input-field" id="passwordInput" placeholder="••••••••" required />
+        </div>
+      </div>
+
+      <div class="remember-row" id="rememberRow">
+        <label><input type="checkbox" id="rememberMe" checked /> Remember me</label>
+        <a href="#">Forgot password?</a>
+      </div>
+
+      <button type="submit" class="primary" id="submitBtn">
+        <span id="submitText">Login</span>
+        <span id="submitSpinner" class="spinner" style="display:none;width:18px;height:18px;border-width:2px"></span>
+      </button>
+
+    </form>
+
+    <div class="auth-footer">
+      <p id="authFooterText">Don't have an account? <a href="#" id="switchToSignup">Sign Up</a></p>
+    </div>
+
+    <div style="margin-top:var(--space-5);text-align:center">
+      <a href="index.html" style="color:var(--text-muted);font-size:var(--text-sm)">← Back to Shopping</a>
+    </div>
+
+  </div>
+</div>
+
+<script type="module">
+  import { initTheme } from './js/theme.js';
+  import { showToast } from './js/toast.js';
+  import { loginUser, registerUser } from './js/api.js';
+
+  initTheme();
+
+  let isLogin = true;
+  const loginTab = document.getElementById('loginTab');
+  const signupTab = document.getElementById('signupTab');
+  const loginFields = document.getElementById('loginFields');
+  const signupFields = document.getElementById('signupFields');
+  const submitText = document.getElementById('submitText');
+  const submitSpinner = document.getElementById('submitSpinner');
+  const submitBtn = document.getElementById('submitBtn');
+  const authError = document.getElementById('authError');
+  const authFooterText = document.getElementById('authFooterText');
+
+  /* Tab switching */
+  loginTab.addEventListener('click', () => switchMode(true));
+  signupTab.addEventListener('click', () => switchMode(false));
+  document.getElementById('switchToSignup')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    switchMode(false);
+  });
+
+  function switchMode(login) {
+    isLogin = login;
+    loginTab.classList.toggle('active', login);
+    signupTab.classList.toggle('active', !login);
+    signupFields.classList.toggle('active', !login);
+    submitText.textContent = login ? 'Login' : 'Create Account';
+    authFooterText.innerHTML = login
+      ? `Don't have an account? <a href="#" onclick="document.getElementById('signupTab').click();return false">Sign Up</a>`
+      : `Already have an account? <a href="#" onclick="document.getElementById('loginTab').click();return false">Login</a>`;
+    hideError();
+  }
+
+  /* Form submit */
+  document.getElementById('authForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    hideError();
+
+    const email = document.getElementById('emailInput').value.trim();
+    const password = document.getElementById('passwordInput').value;
+    const name = document.getElementById('nameInput')?.value.trim();
+
+    if (!email || !password) return showError('Please fill in all fields');
+    if (!isLogin && !name) return showError('Please enter your name');
+    if (password.length < 6) return showError('Password must be at least 6 characters');
+
+    setLoading(true);
+
+    try {
+      let data;
+      if (isLogin) {
+        data = await loginUser(email, password);
+      } else {
+        data = await registerUser(name, email, password);
+      }
+
+      if (data.error) {
+        showError(data.error);
+        setLoading(false);
+        return;
+      }
+
+      /* Save auth data */
+      localStorage.setItem('ai_shop_token', data.accessToken);
+      localStorage.setItem('ai_shop_refresh_token', data.refreshToken);
+      localStorage.setItem('ai_shop_user', JSON.stringify(data.user));
+
+      showToast(isLogin ? 'Welcome back! 🎉' : 'Account created! 🎉', 'success');
+
+      setTimeout(() => {
+        window.location.href = 'index.html';
+      }, 800);
+
+    } catch (err) {
+      showError('Something went wrong. Please try again.');
+      setLoading(false);
+    }
+  });
+
+  function setLoading(loading) {
+    submitBtn.disabled = loading;
+    submitText.style.display = loading ? 'none' : 'inline';
+    submitSpinner.style.display = loading ? 'inline-block' : 'none';
+  }
+
+  function showError(msg) {
+    authError.textContent = msg;
+    authError.classList.add('show');
+  }
+
+  function hideError() {
+    authError.classList.remove('show');
+  }
+
+  /* Check if already logged in */
+  const user = JSON.parse(localStorage.getItem('ai_shop_user'));
+  if (user) {
+    window.location.href = 'index.html';
+  }
+</script>
+
+</body>
+</html>

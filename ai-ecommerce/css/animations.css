@@ -1,0 +1,143 @@
+/* ==========================================================
+   AISHOPPER — ANIMATIONS
+========================================================== */
+
+/* Page entrance */
+.animate-in {
+  animation: fadeSlideUp var(--duration-slow) var(--ease-out) both;
+}
+
+.animate-in-delay-1 { animation-delay: 100ms; }
+.animate-in-delay-2 { animation-delay: 200ms; }
+.animate-in-delay-3 { animation-delay: 300ms; }
+.animate-in-delay-4 { animation-delay: 400ms; }
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { opacity: 0; transform: scale(0.9); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes slideInRight {
+  from { opacity: 0; transform: translateX(30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideInLeft {
+  from { opacity: 0; transform: translateX(-30px); }
+  to   { opacity: 1; transform: translateX(0); }
+}
+
+/* Staggered card entrance */
+.grid .card {
+  animation: cardEnter var(--duration-slow) var(--ease-out) both;
+}
+
+.grid .card:nth-child(1)  { animation-delay: 50ms; }
+.grid .card:nth-child(2)  { animation-delay: 100ms; }
+.grid .card:nth-child(3)  { animation-delay: 150ms; }
+.grid .card:nth-child(4)  { animation-delay: 200ms; }
+.grid .card:nth-child(5)  { animation-delay: 250ms; }
+.grid .card:nth-child(6)  { animation-delay: 300ms; }
+.grid .card:nth-child(7)  { animation-delay: 350ms; }
+.grid .card:nth-child(8)  { animation-delay: 400ms; }
+
+@keyframes cardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(24px) scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Gradient text shimmer */
+.gradient-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--primary-light) 0%,
+    var(--accent) 25%,
+    var(--primary-light) 50%,
+    var(--accent) 75%,
+    var(--primary-light) 100%
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gradientMove 3s linear infinite;
+}
+
+@keyframes gradientMove {
+  to { background-position: 200% center; }
+}
+
+/* Hover glow */
+.hover-glow {
+  transition: box-shadow var(--duration-normal) var(--ease-out);
+}
+
+.hover-glow:hover {
+  box-shadow: 0 0 20px var(--primary-glow), 0 0 40px rgba(108, 92, 231, 0.15);
+}
+
+/* Floating */
+.float {
+  animation: float 6s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-12px); }
+}
+
+/* Heartbeat (for wishlist) */
+@keyframes heartbeat {
+  0%   { transform: scale(1); }
+  15%  { transform: scale(1.25); }
+  30%  { transform: scale(1); }
+  45%  { transform: scale(1.15); }
+  60%  { transform: scale(1); }
+}
+
+.wishlist-btn.active {
+  animation: heartbeat 0.8s ease-in-out;
+}
+
+/* Count up animation */
+@keyframes countUp {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Bounce */
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+
+/* Page transition overlay */
+.page-transition {
+  position: fixed;
+  inset: 0;
+  background: var(--bg-primary);
+  z-index: 9998;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity var(--duration-normal) var(--ease-out);
+}
+
+.page-transition.active {
+  opacity: 1;
+}

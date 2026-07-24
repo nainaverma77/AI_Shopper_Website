@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Wishlist — AiShopper</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/components.css" />
+  <link rel="stylesheet" href="css/animations.css" />
+  <link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="nav-left">
+    <a href="index.html" class="logo-wrap">
+      <img src="assets/images/logo1.png" alt="AiShopper Logo" class="logo" />
+    </a>
+    <a href="index.html" class="brand">AiShopper</a>
+  </div>
+  <div class="nav-center"></div>
+  <div class="nav-right">
+    <button class="theme-toggle" id="themeToggle" type="button">
+      <span class="sun">☀️</span>
+      <span class="moon">🌙</span>
+    </button>
+    <a href="index.html" class="nav-icon" style="text-decoration:none">🏠</a>
+  </div>
+</nav>
+
+<!-- LAYOUT -->
+<div class="layout">
+  <main style="width:100%">
+
+    <section class="hero animate-in">
+      <div>
+        <h1>❤️ Your Wishlist</h1>
+        <p>Products you've saved for later.</p>
+      </div>
+      <div>
+        <button class="primary" id="moveAllToCartBtn" type="button" style="display:none">🛒 Move All to Cart</button>
+      </div>
+    </section>
+
+    <!-- WISHLIST ITEMS -->
+    <section class="animate-in animate-in-delay-1">
+      <div class="grid" id="wishlistItems"></div>
+    </section>
+
+  </main>
+</div>
+
+<footer class="footer">
+  <div class="footer-bottom">© 2026 AiShopper. All rights reserved.</div>
+</footer>
+
+<script type="module" src="js/main.js"></script>
+<script type="module" src="js/wishlist.js"></script>
+
+</body>
+</html>
