@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout — AiShopper</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-left">
+    <a href="index.html">
+      <div class="logo-wrap"><img src="assets/images/logo1.png" alt="AiShopper Logo" class="logo"></div>
+      <span class="brand">AiShopper</span>
+    </a>
+  </div>
+  <div class="nav-center"></div>
+  <div class="nav-right">
+    <a href="index.html" class="nav-icon" aria-label="Home" style="text-decoration:none; display:flex; align-items:center; justify-content:center;">🏠</a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☀️</button>
+    <div class="account">
+      <button class="nav-icon" id="accountBtn">👤</button>
+      <div class="dropdown" id="accountMenu"><a href="login.html">🔐 Login</a></div>
+    </div>
+  </div>
+</nav>
+
+<div class="checkout-page">
+  <h1 style="font-size:24px;margin-bottom:8px">Checkout</h1>
+
+  <!-- Steps -->
+  <div class="checkout-steps">
+    <div class="step active" id="step1"><span class="step-number">1</span> Address</div>
+    <div class="step" id="step2"><span class="step-number">2</span> Payment</div>
+    <div class="step" id="step3"><span class="step-number">3</span> Confirm</div>
+  </div>
+
+  <div class="checkout-content">
+    <div id="checkoutMain">
+      <!-- Step 1: Address -->
+      <div class="checkout-section" id="addressSection">
+        <h3>📍 Delivery Address</h3>
+        <div id="savedAddresses"></div>
+        <div style="margin-top:16px">
+          <h4 style="font-size:15px;margin-bottom:12px">Add New Address</h4>
+          <div class="form-row">
+            <div class="form-group"><label>Full Name</label><input type="text" id="addrName" placeholder="Full name"></div>
+            <div class="form-group"><label>Phone</label><input type="tel" id="addrPhone" placeholder="Phone number"></div>
+          </div>
+          <div class="form-group"><label>Address Line 1</label><input type="text" id="addrLine1" placeholder="House No., Street, Area"></div>
+          <div class="form-group"><label>Address Line 2</label><input type="text" id="addrLine2" placeholder="Landmark (optional)"></div>
+          <div class="form-row">
+            <div class="form-group"><label>City</label><input type="text" id="addrCity" placeholder="City"></div>
+            <div class="form-group"><label>State</label><input type="text" id="addrState" placeholder="State"></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group"><label>Pincode</label><input type="text" id="addrPincode" placeholder="Pincode"></div>
+            <div class="form-group"><label>Country</label><input type="text" id="addrCountry" value="India" placeholder="Country"></div>
+          </div>
+        </div>
+        <button class="primary" style="margin-top:16px" id="toPaymentBtn">Continue to Payment →</button>
+      </div>
+
+      <!-- Step 2: Payment -->
+      <div class="checkout-section" id="paymentSection" style="display:none">
+        <h3>💳 Payment Method</h3>
+        <div class="payment-methods" id="paymentMethods">
+          <div class="payment-option selected" data-method="cod">
+            <span class="icon">💵</span>
+            <div><div class="name">Cash on Delivery</div><div class="desc">Pay when you receive your order</div></div>
+          </div>
+          <div class="payment-option" data-method="upi">
+            <span class="icon">📱</span>
+            <div><div class="name">UPI</div><div class="desc">Google Pay, PhonePe, Paytm, etc.</div></div>
+          </div>
+          <div class="payment-option" data-method="card">
+            <span class="icon">💳</span>
+            <div><div class="name">Credit / Debit Card</div><div class="desc">Visa, Mastercard, RuPay</div></div>
+          </div>
+          <div class="payment-option" data-method="netbanking">
+            <span class="icon">🏦</span>
+            <div><div class="name">Net Banking</div><div class="desc">All major banks supported</div></div>
+          </div>
+        </div>
+        <div style="display:flex;gap:12px;margin-top:16px">
+          <button class="ghost" id="backToAddress">← Back</button>
+          <button class="primary" style="flex:1" id="toConfirmBtn">Review Order →</button>
+        </div>
+      </div>
+
+      <!-- Step 3: Confirmation -->
+      <div class="checkout-section" id="confirmSection" style="display:none">
+        <h3>✅ Review & Place Order</h3>
+        <div id="orderReview"></div>
+        <div style="display:flex;gap:12px;margin-top:20px">
+          <button class="ghost" id="backToPayment">← Back</button>
+          <button class="primary" style="flex:1;height:48px;font-size:16px;font-weight:600" id="placeOrderBtn">🛒 Place Order</button>
+        </div>
+      </div>
+
+      <!-- Success -->
+      <div id="successSection" style="display:none">
+        <div class="success-page" style="max-width:100%">
+          <div class="success-icon">🎉</div>
+          <h1>Order Placed Successfully!</h1>
+          <p>Thank you for shopping with AiShopper. Your order will be delivered within 5-7 business days.</p>
+          <p style="font-size:15px;font-weight:600;color:var(--primary)" id="orderNoText"></p>
+          <div style="display:flex;gap:12px;justify-content:center;margin-top:20px">
+            <a href="account.html#orders"><button class="ghost">View Orders</button></a>
+            <a href="index.html"><button class="primary">Continue Shopping</button></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Order Summary Sidebar -->
+    <div class="order-summary" id="checkoutSummary">
+      <h3>Order Summary</h3>
+      <div id="checkoutSummaryContent"></div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-bottom">© 2026 AiShopper. All rights reserved.</div>
+</footer>
+
+<script type="module" src="js/main.js"></script>
+<script type="module" src="js/checkout.js"></script>
+</body>
+</html>

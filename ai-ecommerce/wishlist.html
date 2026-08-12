@@ -1,63 +1,53 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Wishlist — AiShopper</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/components.css" />
-  <link rel="stylesheet" href="css/animations.css" />
-  <link rel="stylesheet" href="css/responsive.css" />
+  <title>Wishlist — AiShopper</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
 
-<!-- NAVBAR -->
 <nav class="navbar">
   <div class="nav-left">
-    <a href="index.html" class="logo-wrap">
-      <img src="assets/images/logo1.png" alt="AiShopper Logo" class="logo" />
+    <a href="index.html">
+      <div class="logo-wrap"><img src="assets/images/logo1.png" alt="AiShopper Logo" class="logo"></div>
+      <span class="brand">AiShopper</span>
     </a>
-    <a href="index.html" class="brand">AiShopper</a>
   </div>
-  <div class="nav-center"></div>
+  <div class="nav-center">
+    <div class="search-container">
+      <input type="text" class="search-bar" id="searchBar" placeholder="Search products..." autocomplete="off">
+      <span class="search-icon">🔍</span>
+      <div class="search-suggestions" id="searchSuggestions"></div>
+    </div>
+  </div>
   <div class="nav-right">
-    <button class="theme-toggle" id="themeToggle" type="button">
-      <span class="sun">☀️</span>
-      <span class="moon">🌙</span>
-    </button>
-    <a href="index.html" class="nav-icon" style="text-decoration:none">🏠</a>
+    <a href="index.html" class="nav-icon" aria-label="Home" style="text-decoration:none; display:flex; align-items:center; justify-content:center;">🏠</a>
+    <button class="theme-toggle" id="themeToggle">☀️</button>
+    <button class="nav-icon" data-action="wishlist">❤️<span class="badge" id="wishlistCount">0</span></button>
+    <button class="nav-icon" data-action="cart">🛒<span class="badge" id="cartCount">0</span></button>
+    <div class="account">
+      <button class="nav-icon" id="accountBtn">👤</button>
+      <div class="dropdown" id="accountMenu"><a href="login.html">🔐 Login / Sign Up</a></div>
+    </div>
   </div>
 </nav>
 
-<!-- LAYOUT -->
-<div class="layout">
-  <main style="width:100%">
-
-    <section class="hero animate-in">
-      <div>
-        <h1>❤️ Your Wishlist</h1>
-        <p>Products you've saved for later.</p>
-      </div>
-      <div>
-        <button class="primary" id="moveAllToCartBtn" type="button" style="display:none">🛒 Move All to Cart</button>
-      </div>
-    </section>
-
-    <!-- WISHLIST ITEMS -->
-    <section class="animate-in animate-in-delay-1">
-      <div class="grid" id="wishlistItems"></div>
-    </section>
-
-  </main>
+<div style="max-width:1100px;margin:0 auto;padding:24px">
+  <h1 style="font-size:24px;margin-bottom:20px">❤️ My Wishlist</h1>
+  <div class="grid" id="wishlistItems"></div>
 </div>
 
 <footer class="footer">
-  <div class="footer-bottom">© 2026 AiShopper. All rights reserved.</div>
+  <div class="footer-bottom">© 2026 AiShopper. All rights reserved. Frontend made by "Naina Verma"</div>
 </footer>
 
 <script type="module" src="js/main.js"></script>
 <script type="module" src="js/wishlist.js"></script>
-
 </body>
 </html>

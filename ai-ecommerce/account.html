@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>My Account — AiShopper</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-left">
+    <a href="index.html">
+      <div class="logo-wrap"><img src="assets/images/logo1.png" alt="AiShopper Logo" class="logo"></div>
+      <span class="brand">AiShopper</span>
+    </a>
+  </div>
+  <div class="nav-center">
+    <div class="search-container">
+      <input type="text" class="search-bar" id="searchBar" placeholder="Search products..." autocomplete="off">
+      <span class="search-icon">🔍</span>
+      <div class="search-suggestions" id="searchSuggestions"></div>
+    </div>
+  </div>
+  <div class="nav-right">
+    <a href="index.html" class="nav-icon" aria-label="Home" style="text-decoration:none; display:flex; align-items:center; justify-content:center;">🏠</a>
+    <button class="theme-toggle" id="themeToggle">☀️</button>
+    <button class="nav-icon" data-action="wishlist">❤️<span class="badge" id="wishlistCount">0</span></button>
+    <button class="nav-icon" data-action="cart">🛒<span class="badge" id="cartCount">0</span></button>
+    <div class="account">
+      <button class="nav-icon" id="accountBtn">👤</button>
+      <div class="dropdown" id="accountMenu"><a href="login.html">🔐 Login</a></div>
+    </div>
+  </div>
+</nav>
+
+<div class="account-page">
+  <!-- Sidebar -->
+  <div class="account-sidebar">
+    <div class="user-info">
+      <div class="user-avatar" id="userAvatar">U</div>
+      <div class="user-name" id="userName">User</div>
+      <div class="user-email" id="userEmail">user@email.com</div>
+    </div>
+    <ul class="account-nav">
+      <li><a href="#profile" class="active" data-section="profile">👤 Profile</a></li>
+      <li><a href="#orders" data-section="orders">📦 My Orders</a></li>
+      <li><a href="#addresses" data-section="addresses">📍 Addresses</a></li>
+      <li><a href="#settings" data-section="settings">⚙️ Settings</a></li>
+      <li><a href="help.html">❓ Help</a></li>
+    </ul>
+  </div>
+
+  <!-- Content -->
+  <div class="account-content">
+    <!-- Profile Section -->
+    <div class="account-section active" id="section-profile">
+      <h2>👤 My Profile</h2>
+      <div class="form-row">
+        <div class="form-group"><label>Full Name</label><input type="text" id="profileName" placeholder="Your name"></div>
+        <div class="form-group"><label>Email</label><input type="email" id="profileEmail" placeholder="Email" disabled></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>Phone</label><input type="tel" id="profilePhone" placeholder="Phone number"></div>
+        <div class="form-group"><label>Member Since</label><input type="text" id="profileSince" disabled></div>
+      </div>
+      <button class="primary" id="saveProfile" style="margin-top:8px">Save Changes</button>
+    </div>
+
+    <!-- Orders Section -->
+    <div class="account-section" id="section-orders">
+      <h2>📦 My Orders</h2>
+      <div id="ordersList"></div>
+    </div>
+
+    <!-- Addresses Section -->
+    <div class="account-section" id="section-addresses">
+      <h2>📍 Saved Addresses</h2>
+      <div id="addressesList"></div>
+      <button class="ghost" style="margin-top:16px" id="addNewAddress">+ Add New Address</button>
+    </div>
+
+    <!-- Settings Section -->
+    <div class="account-section" id="section-settings">
+      <h2>⚙️ Settings</h2>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:14px;background:var(--surface-1);border-radius:var(--radius-lg)">
+          <div><strong>Dark Mode</strong><br><small style="color:var(--text-muted)">Toggle between dark and light theme</small></div>
+          <button class="theme-toggle" id="settingsThemeToggle">☀️</button>
+        </div>
+        <div style="display:flex;justify-content:space-between;align-items:center;padding:14px;background:var(--surface-1);border-radius:var(--radius-lg)">
+          <div><strong>Notifications</strong><br><small style="color:var(--text-muted)">Order updates and promotions</small></div>
+          <label style="cursor:pointer"><input type="checkbox" checked id="notifToggle"> Enabled</label>
+        </div>
+        <div style="padding:14px;background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.2);border-radius:var(--radius-lg)">
+          <strong style="color:var(--danger)">Danger Zone</strong>
+          <p style="font-size:13px;color:var(--text-muted);margin:6px 0 12px">Permanently delete your account and all data</p>
+          <button class="danger-btn" id="deleteAccount">Delete Account</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-bottom">© 2026 AiShopper. All rights reserved. Frontend made by "Naina Verma"</div>
+</footer>
+
+<script type="module" src="js/main.js"></script>
+<script type="module" src="js/account.js"></script>
+</body>
+</html>

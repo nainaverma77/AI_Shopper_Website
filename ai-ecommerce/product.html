@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Cart — AiShopper</title>
+  <title>Product Details — AiShopper</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/components.css">
@@ -34,26 +34,53 @@
     <button class="nav-icon" data-action="cart">🛒<span class="badge" id="cartCount">0</span></button>
     <div class="account">
       <button class="nav-icon" id="accountBtn">👤</button>
-      <div class="dropdown" id="accountMenu"><a href="login.html">🔐 Login / Sign Up</a></div>
+      <div class="dropdown" id="accountMenu">
+        <a href="login.html">🔐 Login / Sign Up</a>
+      </div>
     </div>
   </div>
 </nav>
 
-<!-- CART PAGE -->
-<div class="cart-page">
-  <h1 style="font-size:24px;margin-bottom:20px">🛒 Shopping Cart</h1>
+<!-- PRODUCT DETAIL -->
+<div class="product-page" id="productPage">
+  <div class="product-container" id="productContainer">
+    <!-- Filled by JS -->
+  </div>
 
-  <div class="cart-layout" id="cartLayout">
-    <!-- Cart items -->
-    <div>
-      <div class="cart-items-list" id="cartItems"></div>
+  <!-- Specifications -->
+  <div class="product-details-section" id="specsSection" style="display:none">
+    <h3>📋 Specifications</h3>
+    <table class="specs-table" id="specsTable"></table>
+  </div>
+
+  <!-- Reviews -->
+  <div class="reviews-section" id="reviewsSection">
+    <h3>⭐ Customer Reviews</h3>
+
+    <div class="rating-overview" id="ratingOverview"></div>
+
+    <!-- Review Form -->
+    <div class="review-form" id="reviewForm">
+      <h4>Write a Review</h4>
+      <div class="star-input" id="starInput">
+        <span data-star="1">★</span>
+        <span data-star="2">★</span>
+        <span data-star="3">★</span>
+        <span data-star="4">★</span>
+        <span data-star="5">★</span>
+      </div>
+      <textarea id="reviewText" placeholder="Share your experience with this product..."></textarea>
+      <button class="primary" id="submitReviewBtn">Submit Review</button>
     </div>
 
-    <!-- Order Summary -->
-    <div class="order-summary" id="cartSummary">
-      <h3>Order Summary</h3>
-      <div id="summaryContent"></div>
-    </div>
+    <!-- Review List -->
+    <div id="reviewList"></div>
+  </div>
+
+  <!-- Similar Products -->
+  <div style="margin-top:32px">
+    <h2>Similar Products</h2>
+    <div class="grid" id="similarProducts"></div>
   </div>
 </div>
 
@@ -64,6 +91,6 @@
 </footer>
 
 <script type="module" src="js/main.js"></script>
-<script type="module" src="js/cart.js"></script>
+<script type="module" src="js/product-detail.js"></script>
 </body>
 </html>

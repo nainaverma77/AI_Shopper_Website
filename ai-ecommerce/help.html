@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Help & Support — AiShopper</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+
+<nav class="navbar">
+  <div class="nav-left">
+    <a href="index.html">
+      <div class="logo-wrap"><img src="assets/images/logo1.png" alt="AiShopper Logo" class="logo"></div>
+      <span class="brand">AiShopper</span>
+    </a>
+  </div>
+  <div class="nav-center">
+    <div class="search-container">
+      <input type="text" class="search-bar" id="searchBar" placeholder="Search products..." autocomplete="off">
+      <span class="search-icon">🔍</span>
+      <div class="search-suggestions" id="searchSuggestions"></div>
+    </div>
+  </div>
+  <div class="nav-right">
+    <a href="index.html" class="nav-icon" aria-label="Home" style="text-decoration:none; display:flex; align-items:center; justify-content:center;">🏠</a>
+    <button class="theme-toggle" id="themeToggle">☀️</button>
+    <button class="nav-icon" data-action="wishlist">❤️<span class="badge" id="wishlistCount">0</span></button>
+    <button class="nav-icon" data-action="cart">🛒<span class="badge" id="cartCount">0</span></button>
+    <div class="account">
+      <button class="nav-icon" id="accountBtn">👤</button>
+      <div class="dropdown" id="accountMenu"><a href="login.html">🔐 Login</a></div>
+    </div>
+  </div>
+</nav>
+
+<div class="help-page">
+
+  <!-- Hero -->
+  <div class="help-hero">
+    <h1>❓ How can we help you?</h1>
+    <p>Find answers to common questions or reach out to our support team.</p>
+    <div class="help-search">
+      <input type="text" id="helpSearch" placeholder="Search for help topics...">
+    </div>
+  </div>
+
+  <!-- Quick Links -->
+  <div class="contact-grid" style="margin-bottom:24px">
+    <div class="contact-card">
+      <div class="icon">📦</div>
+      <h4>Track Order</h4>
+      <p>Check your order status and delivery updates</p>
+      <a href="account.html#orders"><button class="ghost" style="margin-top:8px;font-size:12px">View Orders</button></a>
+    </div>
+    <div class="contact-card">
+      <div class="icon">🔄</div>
+      <h4>Return & Exchange</h4>
+      <p>Easy returns within 7 days of delivery</p>
+      <a href="account.html#orders"><button class="ghost" style="margin-top:8px;font-size:12px">Start Return</button></a>
+    </div>
+    <div class="contact-card">
+      <div class="icon">💬</div>
+      <h4>Chat with Us</h4>
+      <p>Talk to our AI assistant 24/7</p>
+      <button class="ghost" style="margin-top:8px;font-size:12px" onclick="document.querySelector('.chatbot-fab')?.click()">Open Chat</button>
+    </div>
+  </div>
+
+  <!-- FAQ: Orders -->
+  <div class="faq-section">
+    <h2>📦 Orders & Shipping</h2>
+    <div class="faq-item">
+      <div class="faq-question">How do I track my order? <span class="arrow">▼</span></div>
+      <div class="faq-answer">Go to My Account → My Orders. You'll see the current status of each order. For detailed tracking, click on the order number. You'll receive email and SMS updates at each stage of delivery.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">How long does delivery take? <span class="arrow">▼</span></div>
+      <div class="faq-answer">Standard delivery takes 3-7 business days depending on your location. Metro cities typically receive orders in 3-4 days. Express delivery (available on select products) delivers within 1-2 business days.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Is Cash on Delivery (COD) available? <span class="arrow">▼</span></div>
+      <div class="faq-answer">Yes! COD is available on most products. You can select "Cash on Delivery" as your payment method during checkout. COD orders have a maximum limit of ₹50,000.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Can I change my delivery address? <span class="arrow">▼</span></div>
+      <div class="faq-answer">You can change your delivery address before the order is shipped. Go to My Account → My Orders → click on the order, and use the "Change Address" option. Once shipped, the address cannot be modified.</div>
+    </div>
+  </div>
+
+  <!-- FAQ: Returns -->
+  <div class="faq-section" id="returns">
+    <h2>🔄 Returns & Exchange</h2>
+    <div class="faq-item">
+      <div class="faq-question">What is the return policy? <span class="arrow">▼</span></div>
+      <div class="faq-answer">We offer a 7-day easy return policy on most products. Items must be unused, in original packaging, with all tags intact. Electronics have a 10-day replacement window. Fashion items can be exchanged for different sizes.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">How do I return a product? <span class="arrow">▼</span></div>
+      <div class="faq-answer">Go to My Account → My Orders → Select the order → Click "Return/Exchange". Choose your reason, and a pickup will be scheduled within 24-48 hours. Refunds are processed within 5-7 business days after we receive the item.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">When will I get my refund? <span class="arrow">▼</span></div>
+      <div class="faq-answer">Refunds are processed within 5-7 business days after the returned item is received. Bank transfers take 3-5 days. UPI refunds are instant. For COD orders, refunds are credited to your AiShopper wallet.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Can I exchange for a different product? <span class="arrow">▼</span></div>
+      <div class="faq-answer">Exchange is available for size/color changes within the same product. For a completely different product, please return the current item and place a new order. Our customer support can help facilitate this process.</div>
+    </div>
+  </div>
+
+  <!-- FAQ: Payments -->
+  <div class="faq-section">
+    <h2>💳 Payments</h2>
+    <div class="faq-item">
+      <div class="faq-question">What payment methods are accepted? <span class="arrow">▼</span></div>
+      <div class="faq-answer">We accept Credit/Debit Cards (Visa, Mastercard, RuPay), UPI (Google Pay, PhonePe, Paytm), Net Banking (all major banks), and Cash on Delivery. We also support AiShopper Wallet for instant payments.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">Is online payment safe? <span class="arrow">▼</span></div>
+      <div class="faq-answer">Absolutely! All transactions are encrypted with 256-bit SSL. We use Razorpay/Stripe for payment processing — the same technology used by top banks. We never store your card details on our servers.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">How do I apply a coupon code? <span class="arrow">▼</span></div>
+      <div class="faq-answer">In the cart page, you'll find a "Coupon Code" input field below the order summary. Enter your coupon code and click "Apply". Valid coupons will be reflected in the total immediately. Some coupons have minimum order value requirements.</div>
+    </div>
+  </div>
+
+  <!-- FAQ: Account -->
+  <div class="faq-section">
+    <h2>👤 Account</h2>
+    <div class="faq-item">
+      <div class="faq-question">How do I create an account? <span class="arrow">▼</span></div>
+      <div class="faq-answer">Click on the user icon in the top right → "Login / Sign Up". Switch to the Sign Up tab, enter your name, email, and password (minimum 6 characters), and you're done! You can also continue as a guest without an account.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">I forgot my password. How do I reset it? <span class="arrow">▼</span></div>
+      <div class="faq-answer">On the login page, click "Forgot Password?" and enter your registered email. You'll receive a password reset link within a few minutes. If you don't see the email, check your spam folder or contact support.</div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-question">How do I delete my account? <span class="arrow">▼</span></div>
+      <div class="faq-answer">Go to My Account → Settings → "Delete Account" in the Danger Zone. This action is permanent and will delete all your order history, saved addresses, and preferences. Active orders will still be fulfilled.</div>
+    </div>
+  </div>
+
+  <!-- Contact Us -->
+  <div class="faq-section">
+    <h2>📞 Contact Us</h2>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <div class="icon">📧</div>
+        <h4>Email Support</h4>
+        <p>support@aishopper.com</p>
+        <p>Response within 24 hours</p>
+      </div>
+      <div class="contact-card">
+        <div class="icon">📞</div>
+        <h4>Phone Support</h4>
+        <p>1800-123-4567 (Toll Free)</p>
+        <p>Mon-Sat, 9 AM - 9 PM IST</p>
+      </div>
+      <div class="contact-card">
+        <div class="icon">💬</div>
+        <h4>Live Chat</h4>
+        <p>Chat with our AI assistant</p>
+        <p>Available 24/7</p>
+      </div>
+    </div>
+
+    <div style="margin-top:24px">
+      <h4 style="margin-bottom:12px">Send us a message</h4>
+      <form class="contact-form" id="contactForm">
+        <div class="form-row">
+          <div class="form-group"><label>Name</label><input type="text" placeholder="Your name" required></div>
+          <div class="form-group"><label>Email</label><input type="email" placeholder="Your email" required></div>
+        </div>
+        <div class="form-group"><label>Subject</label><input type="text" placeholder="What's this about?"></div>
+        <div class="form-group"><label>Message</label><textarea style="width:100%;min-height:120px;padding:12px;background:var(--surface-1);border:1px solid var(--border-default);border-radius:var(--radius-md);color:var(--text-primary);font-family:var(--font-primary);resize:vertical" placeholder="Tell us more..."></textarea></div>
+        <button type="submit" class="primary">Send Message</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="footer-bottom">© 2026 AiShopper. All rights reserved. Frontend made by "Naina Verma"</div>
+</footer>
+
+<script type="module" src="js/main.js"></script>
+<script type="module" src="js/help.js"></script>
+</body>
+</html>

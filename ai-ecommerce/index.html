@@ -1,16 +1,19 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="AiShopper — AI-powered smart shopping platform with personalized recommendations, natural language search, and premium products." />
+  <meta name="description" content="AiShopper — Smart AI-powered e-commerce platform with personalized product recommendations." />
   <title>AiShopper — Smart Shopping with AI</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/components.css" />
-  <link rel="stylesheet" href="css/animations.css" />
-  <link rel="stylesheet" href="css/responsive.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  >
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/animations.css">
+  <link rel="stylesheet" href="css/responsive.css">
 </head>
 <body>
 
@@ -18,96 +21,82 @@
 <nav class="navbar">
 
   <div class="nav-left">
-    <a href="index.html" class="logo-wrap">
-      <img src="assets/images/logo1.png" alt="AiShopper Logo" class="logo" />
+    <a href="index.html">
+      <div class="logo-wrap">
+        <img src="assets/images/logo1.png" alt="AiShopper Logo" class="logo">
+      </div>
+      <span class="brand">AiShopper</span>
     </a>
-    <a href="index.html" class="brand">AiShopper</a>
   </div>
 
   <div class="nav-center">
     <div class="search-container">
-      <span class="search-icon">🔍</span>
       <input
         type="text"
         class="search-bar"
         id="searchBar"
-        placeholder="Search with AI — try &quot;gaming laptop under ₹70000&quot;"
+        placeholder="Search products, brands, categories..."
         autocomplete="off"
-      />
-      <div class="search-actions">
-        <button class="search-action-btn" id="voiceSearchBtn" data-tooltip="Voice Search" type="button">🎤</button>
-      </div>
+      >
+      <span class="search-icon">🔍</span>
       <div class="search-suggestions" id="searchSuggestions"></div>
     </div>
   </div>
 
   <div class="nav-right">
+    <a href="index.html" class="nav-icon" aria-label="Home" style="text-decoration:none; display:flex; align-items:center; justify-content:center;">🏠</a>
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">☀️</button>
 
-    <button class="theme-toggle" id="themeToggle" data-tooltip="Toggle Theme" type="button">
-      <span class="sun">☀️</span>
-      <span class="moon">🌙</span>
-    </button>
-
-    <button class="nav-icon" data-action="wishlist" data-tooltip="Wishlist" type="button">
+    <button class="nav-icon" data-action="wishlist" aria-label="Wishlist">
       ❤️
       <span class="badge" id="wishlistCount">0</span>
     </button>
 
-    <button class="nav-icon" data-action="cart" data-tooltip="Cart" type="button">
+    <button class="nav-icon" data-action="cart" aria-label="Cart">
       🛒
       <span class="badge" id="cartCount">0</span>
     </button>
 
     <div class="account">
-      <button class="nav-icon" id="accountBtn" type="button">👤</button>
+      <button class="nav-icon" id="accountBtn" aria-label="Account">👤</button>
       <div class="dropdown" id="accountMenu">
         <a href="login.html">🔐 Login / Sign Up</a>
-        <a href="#">📦 Track Order</a>
-        <a href="#">🎧 Customer Support</a>
-        <a href="#">⚙️ Settings</a>
+        <div class="dropdown-divider"></div>
+        <a href="help.html">❓ Help & Support</a>
       </div>
     </div>
-
   </div>
 </nav>
-
-<!-- Mobile Search (visible on small screens) -->
-<div class="mobile-search">
-  <div class="search-container">
-    <span class="search-icon">🔍</span>
-    <input type="text" class="search-bar" placeholder="Search products..." autocomplete="off" />
-  </div>
-</div>
 
 <!-- ================= LAYOUT ================= -->
 <div class="layout">
 
   <!-- FILTER PANEL -->
   <aside class="panel">
-    <h3>🎛 Filters</h3>
+    <h3>Filters</h3>
 
     <label>Category</label>
     <select id="categoryFilter"></select>
 
     <label>Sort by</label>
     <select id="sortFilter">
-      <option value="ai">✨ AI Recommended</option>
+      <option value="ai">AI Recommended</option>
       <option value="price-low">Price: Low → High</option>
       <option value="price-high">Price: High → Low</option>
-      <option value="rating">Top Rated</option>
     </select>
 
-    <label>Max Price</label>
-    <input type="range" id="priceFilter" />
+    <label>Max price</label>
+    <input type="range" id="priceFilter">
     <span id="priceValue"></span>
 
     <div class="panel-box">
       <strong>AI Mode</strong>
-      <p>Recommendations powered by behavior analysis and product similarity.</p>
+      <p>Recommendations based on behavior and similarity.</p>
     </div>
 
+    <!-- ACTIVE FILTER SUMMARY -->
     <div class="panel-summary">
-      <strong>Active Filters</strong>
+      <strong>Active filters</strong>
       <p id="activeFiltersText">Showing all products</p>
     </div>
   </aside>
@@ -115,15 +104,14 @@
   <!-- MAIN CONTENT -->
   <main>
 
-    <!-- HERO -->
-    <section class="hero animate-in">
+    <section class="hero">
       <div>
         <h1>Smart Shopping with AI</h1>
-        <p>Personalized product discovery powered by artificial intelligence.</p>
+        <p>Personalized product discovery made simple.</p>
 
         <div class="hero-actions">
-          <button class="primary" id="exploreBtn" type="button">🛍 Explore Products</button>
-          <button class="ghost" id="refreshAiBtn" type="button">✨ Refresh AI Picks</button>
+          <button class="primary" id="exploreBtn">Explore products</button>
+          <button class="ghost" id="refreshAiBtn">Refresh AI picks</button>
         </div>
       </div>
 
@@ -143,71 +131,65 @@
       </div>
     </section>
 
-    <!-- CATEGORIES -->
-    <section class="animate-in animate-in-delay-1">
-      <h2>Browse Categories</h2>
-      <div class="categories-scroll" id="categoriesScroll"></div>
-    </section>
-
-    <!-- AI RECOMMENDED -->
-    <section class="animate-in animate-in-delay-2">
-      <h2>Recommended for You</h2>
-      <div class="grid" id="recommended"></div>
-    </section>
-
     <!-- PRODUCT MODAL -->
     <div class="product-modal" id="productModal">
       <div class="product-modal-content">
-        <button class="modal-close" id="closeModal" type="button">✕</button>
+
+        <button class="modal-close" id="closeModal">✕</button>
+
         <div class="modal-image">
-          <img id="modalImage" alt="" />
+          <img id="modalImage" alt="">
         </div>
+
         <div class="modal-info">
           <h2 id="modalTitle"></h2>
           <p class="modal-price" id="modalPrice"></p>
+
           <div class="modal-actions">
-            <button class="ghost" id="modalCloseBtn" type="button">Close</button>
-            <button class="primary" id="modalCartBtn" type="button">🛒 Add to Cart</button>
+            <button class="ghost" id="modalCloseBtn">Close</button>
+            <button class="ghost" id="modalViewBtn" onclick="">View Details</button>
+            <button class="primary" id="modalCartBtn">Add to Cart</button>
           </div>
         </div>
+
       </div>
     </div>
 
-    <!-- ALL PRODUCTS -->
-    <section id="allProducts" class="animate-in animate-in-delay-3">
-      <h2>All Products</h2>
+    <section>
+      <h2>Recommended for you</h2>
+      <div class="grid" id="recommended"></div>
+    </section>
+
+    <section id="allProducts">
+      <h2>All products</h2>
       <div class="grid" id="products"></div>
     </section>
 
   </main>
 </div>
 
-<!-- ================= CHATBOT FAB ================= -->
-<button class="chatbot-fab" id="chatbotFab" data-tooltip="AI Assistant" type="button">🤖</button>
-
 <!-- ================= FOOTER ================= -->
 <footer class="footer">
   <div class="footer-container">
 
     <div class="footer-brand">
-      <img src="assets/images/logo1.png" alt="AiShopper Logo" />
-      <p>Smart shopping powered by AI recommendations. Discover products tailored just for you.</p>
+      <img src="assets/images/logo1.png" alt="AiShopper Logo">
+      <p>Smart shopping powered by AI recommendations.</p>
     </div>
 
     <div class="footer-links">
       <h4>Shop</h4>
-      <a href="#">All Products</a>
+      <a href="index.html">All Products</a>
       <a href="wishlist.html">Wishlist</a>
       <a href="cart.html">Cart</a>
-      <a href="#">Deals</a>
+      <a href="#">Offers</a>
     </div>
 
     <div class="footer-links">
       <h4>Support</h4>
-      <a href="#">Customer Support</a>
-      <a href="#">Warranty</a>
-      <a href="#">Returns</a>
-      <a href="#">FAQs</a>
+      <a href="help.html">Customer Support</a>
+      <a href="help.html#returns">Returns & Exchange</a>
+      <a href="help.html">FAQs</a>
     </div>
 
     <div class="footer-links">
@@ -220,7 +202,7 @@
   </div>
 
   <div class="footer-bottom">
-    © 2026 AiShopper. All rights reserved. Made with ❤️ by Naina Verma
+    © 2026 AiShopper. All rights reserved. Frontend made by "Naina Verma"
   </div>
 </footer>
 
